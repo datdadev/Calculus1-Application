@@ -298,7 +298,7 @@ set(secant_plot, 'LineStyle', '-');
 Input and Result:\\[-0.35cm]
 \begin{figure}[H]
     \centering
-    \efbox{\includegraphics[]{images/input_pursuit_curve.png}}
+    \efbox{\includegraphics[]{images/input_derivative.png}}\\
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[trim={4.5cm 8.35cm 3.25cm 8cm},clip,scale=0.6]{pdfs/derivative.pdf}
@@ -341,23 +341,33 @@ The derivative provides crucial information about the behavior of functions in v
 An electronic speedometer is a key component in modern vehicles, providing drivers with real-time speed information. It relies on wheel speed sensors that generate electrical signals corresponding to the rotation of the wheels. By counting the pulses from these sensors within a specific time interval, the electronic control unit (ECU) calculates the derivative of the pulse count, which represents the rate of change of wheel speed. This derivative value is then converted into a speed measurement using calibration parameters and scaling factors. The final speed value is displayed on the speedometer's digital or analog display, ensuring that drivers have accurate and instantaneous speed readings.\\[0.1cm]
 
 \begin{center}
+\begin{figure}[H]
+\centering
 \includegraphics[width=.45\textwidth]{images/electronic_speedometer.jpg}
+\caption{A digital speedometer}
+\end{figure}
 \end{center}
+
+\vspace{-0.8cm}
 
 To ensure accurate readings, electronic speedometers often employ smoothing and filtering techniques. These techniques involve processing the derivative values to reduce noise and fluctuations caused by variations in wheel rotation. Filtering algorithms such as moving average or low-pass filters are applied to obtain a smoother representation of the speed. This helps drivers perceive a more stable speed reading, particularly in situations where wheel rotation may be inconsistent.
 
 Overall, the application of derivatives in electronic speedometers enables the continuous monitoring and calculation of vehicle speed. By leveraging the principles of calculus, electronic speedometers provide drivers with reliable and up-to-date speed information, enhancing safety and enabling better control of the vehicle. Through the integration of wheel speed sensors, signal processing units, and display mechanisms, electronic speedometers ensure that drivers stay informed about their current speed while driving.
 
-\subsubsection{Volume vs. Current in Capacitor}
+\newpage
+\subsubsection{Voltage vs. Current in Capacitor}
 The derivative of a capacitor represents how its voltage changes with respect to time. A capacitor is an electronic component that stores electrical energy in the form of an electric field. It consists of two conductive plates separated by an insulating material, known as a dielectric.
 
 \begin{center}
+\begin{figure}[H]
+\centering
 \begin{circuitikz}
+\centering
 \ctikzset{capacitors/width=0.1}
 \node[spdt, xscale=-1] (sw) {};
-\draw   (sw.in)     node[above] {S}
+\draw   (sw.in)     node[above] {$S$}
                 -- ++ (1,0)
-                to [C=$C_1$, name=Csign] ++ (0,-3)  coordinate (aux1)
+                to [C=$C$, name=Csign] ++ (0,-3)  coordinate (aux1)
     (Csign.north west) node[above] {$+$}
     (Csign.north west) node[below=1mm] {$-$}
     (sw.out 2)  node[below] {b}   
@@ -368,7 +378,11 @@ The derivative of a capacitor represents how its voltage changes with respect to
                 to [battery2, v_=$\epsilon$]    (aux3 |- aux1)
                 -- (aux1);
 \end{circuitikz}
+\caption{A $RC$ circuit}
+\end{figure}
 \end{center}
+
+\vspace{-0.8cm}
 
 When a voltage is applied across the capacitor, the plates accumulate opposite charges, creating an electric field between them. The voltage across the capacitor is directly proportional to the amount of charge stored on the plates. Mathematically, we can express this relationship as:
 
@@ -387,8 +401,14 @@ In other words, the derivative of a capacitor's voltage $\dfrac{dV}{dt}$ multipl
 In practice, when you apply a changing voltage across a capacitor (for example, in an AC circuit), the derivative of the voltage waveform determines the current flowing through the capacitor. The derivative $\dfrac{dV}{dt}$ represents the slope of the voltage waveform, indicating how quickly the voltage is changing at any given time. The capacitance $C$ determines how much current is required to change the voltage at a particular rate.
 
 \begin{center}
+\begin{figure}[H]
+\centering
 \textcolor{black}{\fboxrule=2pt\fbox{\includegraphics[width=.85\textwidth]{images/rc_circuit.png}}}
+\caption{$RC$ circuit simulation and $IV$ graph of capacitor}
+\end{figure}
 \end{center}
+
+\vspace{-0.8cm}
 
 Taking this example, after the capacitor fully charged, let's define the time $t_0=0$ as the time when we switch the switch in the other direction, and $V(t_0)$ currently reaches its maximum. As the capacitor discharges, the function $V(t)$ gradually decreases to 0, following the plot of the exponential function $V(t)=e^{-ax}$. With the same duration, the current is given by $I(t)=C\dfrac{dV}{dt}=-Cae^{-ax}$.
 
@@ -506,7 +526,15 @@ freq_slider.on_changed(update)
 plt.show()
 \end{minted}
 
-\includegraphics[trim={0.5cm 0.75cm 0 0.5cm},clip]{pdfs/riemann_sum.pdf}
+Input and Result:\\[-0.35cm]
+\begin{center}
+\efbox{\includegraphics[]{images/input_riemann_sum.png}}
+\begin{figure}[H]
+\centering
+	\includegraphics[trim={0.5cm 0.75cm 0 0.5cm},clip]{pdfs/riemann_sum.pdf}
+	\caption{Approximation of area under the curve using Riemann sum}
+\end{figure}
+\end{center}
 
 In this report, we will explore the various applications of integrals in different fields. We will discuss how integrals are used to solve problems and provide examples of real-world applications. We will also examine the potential for future developments in the field of integral applications.
 
@@ -596,7 +624,7 @@ plot(\x,{((\x)^2)/2});
 \fill (-2,2) circle (1.5pt); 
 \end{tikzpicture}
 \end{minipage}
-\caption{Force function and potential energy function for a one-dimensional system.}
+\caption{Force function and potential energy function for a one-dimensional system}
 \end{figure}
 
 As we can see from the plot, the force function is linear and the potential energy function is quadratic. The potential energy function is minimum at $x=0$, which is the equilibrium position where the force is zero.
@@ -797,7 +825,11 @@ simulate_double_integral()
 Input and Result:\\[-0.35cm]
 \begin{center}
 \efbox{\includegraphics[]{images/input_double_integral.png}}
+\begin{figure}[H]
+\centering
 \includegraphics[trim={0.5cm 1cm 0 0.35cm},clip]{pdfs/double_integral.pdf}
+\caption{Volume under the surface simulation}
+\end{figure}
 \end{center}
 
 
@@ -853,11 +885,11 @@ plt.show()
 
 \vspace{0.45cm}
 
-\begin{figure}[ht!]
+\begin{figure}[H]
     \begin{center}
         \input{histogram.pgf}
     \end{center}
-    \caption{A PGF histogram from \texttt{matplotlib}}
+    \caption{Sound wave in time domain and frequency domain}
 \end{figure}
 
 Fourier Transform has many practical applications in engineering, such as in audio processing, communication systems, and control systems. For example, engineers may use Fourier Transform to analyze the frequency content of a speech signal and filter out noise or other unwanted components. They may also use Fourier Transform to design audio filters or equalizers that selectively amplify or attenuate specific frequency ranges of a sound signal. In summary, the use of integrals, particularly in the analysis of signals and systems using Fourier Transform, is a powerful technique that has many practical applications in audio and signal processing.
@@ -960,7 +992,7 @@ Integrals are commonly used in engineering to design structures with complex sha
 	}]{8}
  \draw[iline] (8,1.5,-2.25) -- (9,{1.5*5/4},-2.25) ;
 \end{tikzpicture}
-\caption{Screen projection of a surface of revolution.}
+\caption{Screen projection of a surface of revolution}
 \label{fig:example}
 \end{figure}
 
@@ -1179,7 +1211,11 @@ title(['Exact Solution: ', char(exact_sol)]);
 Input and Result:\\[-0.35cm]
 \begin{center}
 \efbox{\includegraphics[]{images/input_ode.png}}
+\begin{figure}[H]
+\centering
 \includegraphics[trim={3.6cm 8.35cm 3.25cm 8cm},clip,scale=0.75]{pdfs/ode.pdf}
+\caption{Solution and graph of differential equation}
+\end{figure}
 \end{center}
 
 
@@ -1306,7 +1342,11 @@ Input and Result:\\[-0.35cm]
 
 \begin{center}
 \efbox{\includegraphics[]{images/input_pursuit_curve.png}}
+\begin{figure}[H]
+\centering
 \includegraphics[trim={3.6cm 8.35cm 3.25cm 8cm},clip,scale=0.75]{pdfs/pursuit_curve.pdf}
+\caption{Object-chasing with pursuit curve simulation}
+\end{figure}
 \end{center}
 
 In summary, pursuit curves derived from ordinary differential equations have practical applications in diverse fields such as aerospace engineering, robotics, and ecology. By formulating pursuit problems as differential equations, engineers and scientists can devise optimal strategies for tracking and intercepting targets, design autonomous systems capable of following moving objects, and gain insights into predator-prey dynamics. These real-life applications demonstrate the significance of differential equations and the pursuit curve concept in solving complex problems and understanding dynamic systems.
@@ -1330,6 +1370,8 @@ Here, $S(t)$, $E(t)$, $I(t)$, and $R(t)$ represent the number of susceptible, ex
 
 \usetikzlibrary{arrows.meta,positioning}
 \begin{center}
+\begin{figure}[H]
+\centering
 \begin{tikzpicture}[node distance=1.75cm and 1.5cm, auto,
 >=Latex,every node/.append style={align=center}, 
 int/.style={draw, minimum size=1.6cm}]
@@ -1348,7 +1390,11 @@ int/.style={draw, minimum size=1.6cm}]
    (d) edge node {$\gamma I$} (e)  edge node {$dI$} (c3)  
    (e) edge node {$dR$} (c4);    
 \end{tikzpicture}
+\caption{$SEIR$ model diagram}
+\end{figure}
 \end{center}
+
+\vspace{-0.8cm}
 
 The $SEIR$ model is utilized to forecast the spread of diseases such as COVID-19. Estimating the model's parameters, including $\beta$, $\alpha$, and $\gamma$, is essential for achieving accurate predictions. Numerical integration techniques and solver functions in programming languages like Python are employed to solve the aforementioned model's differential equations.
 
