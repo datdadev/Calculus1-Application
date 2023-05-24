@@ -1,0 +1,1370 @@
+\documentclass[13pt,a4paper]{report}
+\usepackage[utf8]{}
+\usepackage{fancybox}
+\usepackage[margin=0.85in]{geometry} 
+\usepackage{amsmath, amsthm, amssymb,latexsym,amscd,amsfonts,enumerate}
+\usepackage{tabularx}
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage[nottoc]{tocbibind}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage{hyperref}
+\usepackage{afterpage}
+% \usepackage[square,numbers]{natbib}
+\usepackage{chngcntr}
+\usepackage[super]{nth}
+\usepackage{titlesec}
+\usepackage{gensymb}
+\usepackage{chemmacros}
+\usepackage{multirow}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{bigdelim}
+\usepackage{tocloft}
+\usepackage{minted}
+\usepackage{layouts}
+\usepackage{caption, subcaption}
+\usepackage{efbox,graphicx}
+\efboxsetup{linecolor=black,linewidth=1.5pt}
+\usepackage[american,siunitx]{circuitikz}
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{math}
+% \usepackage[active,tightpage]{preview}
+% \PreviewEnvironment{tikzpicture}
+% \setlength\PreviewBorder{1pt}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns.meta}
+
+\usepackage[backend=biber,
+% style=alphabetic,
+sorting=none,
+]{biblatex}
+\addbibresource{references.bib} %Imports bibliography file
+
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese,main=english]{babel}
+
+\usepackage{makecell}
+
+\renewcommand\labelitemi{$-$}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}{}{0pt}{\Huge}
+  
+\renewcommand*\thesection{\textbf{\Roman{section}}}
+\renewcommand*\thesubsection{\arabic{subsection}.}
+\renewcommand*\thesubsubsection{\alph{subsubsection}.}
+
+
+% SECTION FORMAT
+\titleformat{\section}%[display]
+{\normalfont\bfseries\fontsize{22}{26}\selectfont\raggedright}% Format and bigger size of title text with boldface
+{\llap{%
+    \rule[-6pt]{3cm}{1.3cm}\rule{6pt}{0pt}}% Black box to the left, lowered 6pt. The end rule is a horisontal space.
+  \llap{% Number also to the left, on top of the black box, with bigger font size as section title.
+    \fontsize{22}{26}\selectfont\color{white}\thesection\rule{10pt}{0pt}}}
+{0pt}
+{}{}
+\titlespacing*{\section}
+  {0pt}{40pt}{15pt}
+
+
+
+\renewcommand{\bottomtitlespace}{0cm}
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+\newpage}
+
+\usepackage[none]{hyphenat}
+\sloppy % accept really ugly paragraphs
+
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+
+\usemintedstyle{tango}
+\setminted{fontsize=\fontsize{11pt}{11pt}, frame=single, linenos, xleftmargin=17.5pt, breaklines}
+\setmintedinline{fontsize=\fontsize{13pt}{13pt}}
+\renewcommand\theFancyVerbLine{\normalsize\arabic{FancyVerbLine}}
+    
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{}{0pt}{\Huge}
+% \titleformat*{\subsubsection}{\large\bfseries}
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+    
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+    
+\setlist[itemize]{noitemsep, topsep=0pt}
+\AtBeginEnvironment{multicols}{\RaggedRight}
+
+\pagenumbering{roman}\pagestyle{plain}
+
+\titlespacing*{\chapter}
+{0pt}{-50pt}{0pt}
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+\begin{document}
+%Trang bìa 1
+\fontsize{13pt}{18pt}\selectfont
+\begin{titlepage}
+\thispagestyle{empty}
+\thisfancypage{%đóng khung trang này
+\setlength{\fboxsep}{0pt}% 8pt là độ dày của đường viền
+\fbox}{} % phần nội dung sau là tương tự như đã làm
+\
+
+\begin{center}
+\vspace{-0.25cm}
+\begin{large}
+HO CHI MINH CITY UNIVERSITY OF TECHNOLOGY $-$ VNU HCMC
+\end{large} \\
+\begin{large}
+OFFICE FOR INTERNATIONAL STUDY PROGRAM
+\end{large} \\
+\begin{large}
+FACULTY OF APPLIED SCIENCE
+\end{large} \\
+\textbf{--------------------  $\ast$  ---------------------}\\[2.75cm]
+
+\includegraphics[scale=1]{images/logoBK.png}\\[1cm]
+{\fontsize{20pt}{1}\selectfont CALCULUS 1}\\[1ex]
+{\fontsize{20pt}{1}\selectfont CALCULUS APPLICATION REPORT}\\[2.75cm]
+\end{center}
+
+\begin{otherlanguage}{vietnamese}
+\begin{tabbing}
+	\hspace{2.35cm}Lecturer \ \ \ \ \ \ \ \ \ \ \ \=: \textbf{\parbox[t]{9cm}{M.S. Phan Thị Khánh Vân}}\\
+	\hspace{2.35cm}Subject \>: \textbf{\parbox[t]{9cm}{Calculus 1 (Exercise)}}\\
+	\hspace{2.35cm}Class \>: \textbf{\parbox[t]{9cm}{CC03}}\\
+	\hspace{2.35cm}Group \>: \textbf{\parbox[t]{9cm}{06}}\\
+	\hspace{2.35cm}Members \>: \textbf{\parbox[t]{5.25cm}{
+		Huỳnh Dương Gia Bảo}} \= $-$ 2252063 \\ \> \ \ \textbf{\parbox[t]{6cm}{
+		Lương Triển Đạt}} \> $-$ 2252144 \\ \> \ \ \textbf{\parbox[t]{6cm}{
+		Phùng Nhật Huy}} \> $-$ 2252261 \\ \> \ \ \textbf{\parbox[t]{6cm}{
+		Tạ Anh Huy}} \> $-$ 2211272 \\ \> \ \ \textbf{\parbox[t]{6cm}{
+		Phạm Hoàng Quân}} \> $-$ 2252687 \\ \> \ \ \textbf{\parbox[t]{6cm}{
+		Võ Minh Thăng 
+  }} \> $-$ 2252762 \\[12pt]
+  % \hspace{2.35cm}Completion date \>: \textbf{\parbox[t]{9cm}{April \nth{6}, 2023}}\\[12pt]
+\end{tabbing}
+\end{otherlanguage}
+
+\vspace{0.35cm}
+\begin{center}
+{\fontsize{13pt}{1}\selectfont Ho Chi Minh City, May \nth{24}, 2023}
+\end{center}
+\end{titlepage}
+
+\pagenumbering{gobble}
+
+
+\setlength{\cftbeforetoctitleskip}{0em}
+\setlength{\parindent}{1.75em} % indent hole text
+\setlength{\cftbeforesecskip}{0.65em}
+\setlength{\cftbeforesubsecskip}{0.65em}
+\renewcommand\cftsecaftersnum{.}
+\cftsetindents{section}{1.25cm}{2.75em}
+\cftsetindents{subsection}{1.85cm}{1.35em}
+\cftsetindents{subsubsection}{2.4cm}{1.35em}
+
+\renewcommand{\cftchapfont}{\normalfont\LARGE\bfseries} % \chapter font in ToC
+\renewcommand{\cftsecfont}{\normalfont\bfseries\LARGE}  % \section font in ToC
+\renewcommand{\cftsubsecfont}{\normalfont\Large}     % \subsection font in ToC
+
+\tableofcontents
+\addtocontents{toc}{\vspace{-0.65cm}}
+
+\pagenumbering{arabic}
+\setcounter{page}{2}
+\pgfkeys{
+     /pgf/number format/precision=0, 
+    /pgf/number format/fixed zerofill=true,
+    /pgf/number format/fixed
+}
+
+% % Set section and subsection formatting
+% \titleformat{\section}
+%   {\normalfont\Large\bfseries}{\makebox[1.75em][l]{\thesection}}{0em}{}
+\titleformat{\subsection}
+  {\normalfont\LARGE\bfseries}{\hspace{-0.65cm}\makebox[1em][l]{\thesubsection}}{0em}{}
+\titleformat{\subsubsection}
+  {\normalfont\Large\bfseries}{\hspace{0cm}\makebox[1.25em][l]{\thesubsubsection}}{0em}{}
+
+\pagenumbering{arabic}
+\newpage
+\setcounter{page}{2}
+\section{Derivative}
+\subsection{Theoretical Basis}
+
+The derivative is a fundamental concept in calculus that measures the rate at which a function changes. It provides valuable information about the slope or rate of change of a function at any given point. The derivative allows us to analyze how a function behaves locally, providing insights into its increasing or decreasing nature, the presence of maximum or minimum points, and the concavity of the function.
+
+The derivative of a function $f(x)$ is defined using the concept of limits. Specifically, the derivative at a point $x=x_0$ is obtained by taking the limit of the difference quotient as the interval around a shrinks to zero. The difference quotient represents the average rate of change of the function $f(x)$ over a small interval, and by taking the limit, we can determine the instantaneous rate of change or the slope of the function at that specific point. Mathematically, the derivative is expressed as:
+
+$$f'\left(x_0\right)=\lim_{h\to 0}\dfrac{f\left(x_0 + h\right) - f\left(x_0\right)}{h}$$\\[-1cm]
+
+This definition captures the concept of an infinitesimal change in $x$ and the corresponding change in the function value, allowing us to precisely calculate the derivative at a specific point.
+
+For a better understanding of the aforementioned expression, we have created this Matlab script that simulates the graph by generating the secant line based on the limit and gradually reducing the variable $h$ from $2$ to approximate $0$. As $h$ approaches $0$, the resulting line represents the tangent line at $x_0$ of the function $f(x)$. Below is the code:\\[-0.3cm]
+
+\begin{minted}[linenos=true]{matlab}
+clc; clearvars;
+
+% User input for the function f(x)
+f_str = input("Enter the function f(x): ", 's');
+f = str2func(['@(x)', f_str]);
+
+% User input for the initial point x0
+x0 = input("Enter the point x0: ");
+
+% Define the step size
+h = 2;
+
+% Create a range of x-values
+x = linspace(x0 - h, x0 + 2 * h); % Offset the view
+
+% Compute the corresponding y-values
+y = f(x);
+
+% Plot the function
+plot(x, y, 'linewidth', 2)
+hold on
+grid on
+
+% Compute the slope of the secant line
+secant_line_slope = (f(x0 + h) - f(x0)) / (x0 + h - x0);
+
+% Initialize the secant line
+secant_line = secant_line_slope * (x - x0) + f(x0);
+
+% Plot the secant line
+secant_plot = plot(x, secant_line, '--', 'linewidth', 2);
+
+% Plot the endpoint
+end_point = plot(x0 + h, f(x0 + h), 'g.', 'LineWidth', 2, 'MarkerSize', 25);
+
+% Plot the initial point
+plot(x0, f(x0), 'r.', 'LineWidth', 2, 'MarkerSize', 25)
+
+% Set axis labels and title
+xlabel('x');
+ylabel('y');
+title(sprintf('x0 = %.2f, h = %.2f', x0, h));
+
+% Set the initial view
+xlim([x0 - h, x0 + 2 * h]);
+
+% Compute the y-axis limits
+y_real = real(f(x));
+min_f = min(y_real);
+max_f = max(y_real);
+avg = (abs(max_f) + abs(min_f)) / 2;
+ylim([min_f - avg * 1/2, max_f + avg * 1/2]);
+
+pause(0.5)
+
+% Animation loop
+for h_ = h:-0.01:0.000000001
+    secant_line_slope = (f(x0 + h_) - f(x0)) / (x0 + h_ - x0);
+
+    % Update the secant line
+    secant_line = secant_line_slope * (x - x0) + f(x0);
+    
+    % Update the plot
+    set(secant_plot, 'YData', secant_line);
+    set(end_point, 'XData', x0 + h_, 'YData', f(x0 + h_));
+    
+    title(sprintf('x0 = %.2f, h = %.2f', x0, h_));
+
+    % Pause for a short duration to create an animation effect
+    pause(0.01);
+end
+
+% Set the final secant line type to a straight line
+set(secant_plot, 'LineStyle', '-');
+\end{minted}
+
+\newpage
+Input and Result:\\[-0.35cm]
+\begin{figure}[H]
+    \centering
+    \efbox{\includegraphics[]{images/input_pursuit_curve.png}}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[trim={4.5cm 8.35cm 3.25cm 8cm},clip,scale=0.6]{pdfs/derivative.pdf}
+        \caption{Initial state}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[trim={4.5cm 8.35cm 3.25cm 8cm},clip,scale=0.6]{pdfs/derivative_1.pdf}
+        \caption{Final state}
+    \end{minipage}
+\end{figure}
+
+The derivative provides crucial information about the behavior of functions in various fields, such as physics, economics, engineering, and more. It enables us to study and model dynamic systems, optimize functions, analyze rates of change, and understand fundamental properties of functions. The power of the derivative lies in its ability to capture instantaneous behavior and provide valuable insights into the intricate details of mathematical functions.
+
+\newpage
+\subsection{Applications}
+% \subsu>bsection{Business and Economics}
+
+% In recent years, economic decision making has become increasingly reliant on mathematical methods due to the abundance of statistical data and numerous variables involved. Business analysts and economists have turned to calculus to help describe and predict outcomes, as well as make informed decisions among various possibilities. In this context, we focus on the theory of the firm, which involves studying the activities of a business or industry during a period of relative stability in background conditions. We demonstrate how derivatives play a crucial role in aiding management with important production decisions. It is worth noting that even without an explicit understanding of calculus, management utilizes various functions similar to those we have discussed. Examples of such functions are:\\[-1.25cm]
+
+% $$
+% \begin{aligned}
+% C(x) &: \text{cost of producing x units of the product},\\
+% R(x) &: \text{revenue generated by selling x units of the product},\\
+% P(x) &= R(x) - C(x) : \text{the profit (or loss) from producing and selling x units of the product.}
+% \end{aligned}
+% $$
+% \subsubsection{Control Systems}
+
+% In engineering, control systems are used to regulate and maintain desired behavior in various processes. These systems rely on feedback control, where measurements or observations of the system's output are continuously compared to a desired reference value. The resulting error is used to adjust the system's inputs or parameters to reduce the error and bring the system closer to the desired state.
+
+% Derivatives play a critical role in feedback control by providing information about the rate of change of the error. This information allows control systems to respond effectively to changes in the system and improve stability and performance. The derivative term is particularly useful in predicting the future behavior of the system and can assist in damping oscillations and reducing settling time.
+
+% One commonly used control strategy that incorporates derivatives is the Proportional-Integral-Derivative (PID) controller. A PID controller combines three components: proportional, integral, and derivative. While all three components are important, let's focus on the derivative component and its role in control systems.
+
+% The derivative component of a PID controller calculates the derivative of the error signal. The error signal represents the difference between the system's output and the desired reference value. By taking the derivative of this error, the controller gains insight into the rate at which the error is changing over time. This information helps the controller make adjustments to the system's inputs or parameters.
+
+\subsubsection{Electronic Speedometer}
+
+An electronic speedometer is a key component in modern vehicles, providing drivers with real-time speed information. It relies on wheel speed sensors that generate electrical signals corresponding to the rotation of the wheels. By counting the pulses from these sensors within a specific time interval, the electronic control unit (ECU) calculates the derivative of the pulse count, which represents the rate of change of wheel speed. This derivative value is then converted into a speed measurement using calibration parameters and scaling factors. The final speed value is displayed on the speedometer's digital or analog display, ensuring that drivers have accurate and instantaneous speed readings.\\[0.1cm]
+
+\begin{center}
+\includegraphics[width=.45\textwidth]{images/electronic_speedometer.jpg}
+\end{center}
+
+To ensure accurate readings, electronic speedometers often employ smoothing and filtering techniques. These techniques involve processing the derivative values to reduce noise and fluctuations caused by variations in wheel rotation. Filtering algorithms such as moving average or low-pass filters are applied to obtain a smoother representation of the speed. This helps drivers perceive a more stable speed reading, particularly in situations where wheel rotation may be inconsistent.
+
+Overall, the application of derivatives in electronic speedometers enables the continuous monitoring and calculation of vehicle speed. By leveraging the principles of calculus, electronic speedometers provide drivers with reliable and up-to-date speed information, enhancing safety and enabling better control of the vehicle. Through the integration of wheel speed sensors, signal processing units, and display mechanisms, electronic speedometers ensure that drivers stay informed about their current speed while driving.
+
+\subsubsection{Volume vs. Current in Capacitor}
+The derivative of a capacitor represents how its voltage changes with respect to time. A capacitor is an electronic component that stores electrical energy in the form of an electric field. It consists of two conductive plates separated by an insulating material, known as a dielectric.
+
+\begin{center}
+\begin{circuitikz}
+\ctikzset{capacitors/width=0.1}
+\node[spdt, xscale=-1] (sw) {};
+\draw   (sw.in)     node[above] {S}
+                -- ++ (1,0)
+                to [C=$C_1$, name=Csign] ++ (0,-3)  coordinate (aux1)
+    (Csign.north west) node[above] {$+$}
+    (Csign.north west) node[below=1mm] {$-$}
+    (sw.out 2)  node[below] {b}   
+                -- ++ (-0.5,0)          coordinate (aux2)
+                to [R=$R_2$, -*]    (aux1 -| aux2)
+    (sw.out 1)  node[above] {a}   
+                to [R=$R_1$] ++ (-3,0)  coordinate (aux3)
+                to [battery2, v_=$\epsilon$]    (aux3 |- aux1)
+                -- (aux1);
+\end{circuitikz}
+\end{center}
+
+When a voltage is applied across the capacitor, the plates accumulate opposite charges, creating an electric field between them. The voltage across the capacitor is directly proportional to the amount of charge stored on the plates. Mathematically, we can express this relationship as:
+
+$$Q = C V$$
+
+where $Q$ is the charge stored on the capacitor, $C$ is the capacitance (a measure of the capacitor's ability to store charge), and $V$ is the voltage across the capacitor.
+
+Now, let's differentiate both sides of the equation with respect to time $t$:
+
+$$\dfrac{dQ}{dt}=C\dfrac{dV}{dt}$$
+
+The left side of the equation $\dfrac{dQ}{dt}$ represents the rate of change of charge with respect to time, which is the current flowing into or out of the capacitor. The right side of the equation $C\dfrac{dV}{dt}$ represents the capacitance multiplied by the rate of change of voltage with respect to time.
+
+In other words, the derivative of a capacitor's voltage $\dfrac{dV}{dt}$ multiplied by its capacitance $C$ gives you the current flowing through the capacitor. This relationship is known as the capacitor current-voltage relationship.
+
+In practice, when you apply a changing voltage across a capacitor (for example, in an AC circuit), the derivative of the voltage waveform determines the current flowing through the capacitor. The derivative $\dfrac{dV}{dt}$ represents the slope of the voltage waveform, indicating how quickly the voltage is changing at any given time. The capacitance $C$ determines how much current is required to change the voltage at a particular rate.
+
+\begin{center}
+\textcolor{black}{\fboxrule=2pt\fbox{\includegraphics[width=.85\textwidth]{images/rc_circuit.png}}}
+\end{center}
+
+Taking this example, after the capacitor fully charged, let's define the time $t_0=0$ as the time when we switch the switch in the other direction, and $V(t_0)$ currently reaches its maximum. As the capacitor discharges, the function $V(t)$ gradually decreases to 0, following the plot of the exponential function $V(t)=e^{-ax}$. With the same duration, the current is given by $I(t)=C\dfrac{dV}{dt}=-Cae^{-ax}$.
+
+It's important to note that the derivative of the voltage across a capacitor is discontinuous when the voltage suddenly changes, such as during the charging or discharging of the capacitor. At those instances, the derivative approaches infinity momentarily, indicating a high current flow.
+
+
+
+
+
+
+
+
+\newpage
+\section{Integral}
+\subsection{Theoretical Basis}
+Integrals are one of the fundamental concepts in mathematics and are used extensively in many fields of science and engineering. An integral is a mathematical representation of the area under a curve, and it provides a powerful tool for solving a wide range of problems.
+
+The concept of integrals was first introduced in the \nth{17} century by mathematicians such as Isaac Newton\footnote{Issac Newton: \url{https://en.wikipedia.org/wiki/Isaac_Newton}} and Gottfried Wilhelm Leibniz\footnote{Gottfried Wilhelm Leibniz: \url{https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz}}. The integral is represented by the following formula:
+
+$$\int_a^b f(x)dx=F(x)\bigg|_a^b=F(b)-F(a)$$
+
+Since its inception, the concept of integrals become a cornerstone of modern mathematics. Integrals have been used in many fields, including engineering, physics, economics, biology, computer science, and music theory.
+
+To gain a clear understanding of integrals, the Riemann sum\footnote{Riemann sum: \url{https://en.wikipedia.org/wiki/Riemann_sum}} is a technique used to approximate their values by dividing the area under a curve into smaller rectangles. This method provides an estimation by summing the areas of these rectangles, with each rectangle's width and height determined by the partitioning of the interval and the function's evaluation at specific points. As the number of rectangles increases, the approximation becomes more accurate, approaching the exact value of the integral. The Riemann sum holds a foundational role in integral calculus and plays a crucial part in comprehending advanced integration methods.
+
+Now, let's examine the Python code we have developed to demonstrate the Riemann sum approximation for the area under a curve. The code includes a slider that controls the number of rectangles used to approximate the area. This allows us to observe the convergence of the Riemann sum approximation towards the exact area:\\[-0.3cm]
+
+\begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.widgets import Slider
+
+# User input for f(x) function
+try:
+    fx = input("Enter the function f(x): ")
+    f = lambda x: eval(fx)
+except Exception as e:
+    print("Error:", e)
+    print("Please enter a valid function expression.")
+
+def riemann_sum(f, a, b, n):
+    """Compute the Riemann sum for the function f over the interval [a, b]"""
+    dx = (b - a) / n  # Width of each subinterval
+    x = np.linspace(a, b, n+1)  # Partition interval [a, b] into n subintervals
+    heights = f(x[:-1])  # Heights of the rectangles using left endpoints
+    total_area = np.sum(heights) * dx  # Sum the areas of all rectangles
+    return total_area
+
+# Define interval [a, b] and number of subintervals (n)
+while True:
+    try:
+        a, b = map(float, input("Enter the domain values for a and b: ").split())
+        break
+    except ValueError:
+        print("Invalid input. Please enter valid numeric values.")
+        
+n = 10
+
+# Plotting the function
+x = np.linspace(a, b, 10000)
+y = f(x)
+
+# Create the figure and the line
+fig, ax = plt.subplots()
+line, = ax.plot(x, y, lw=2)
+
+plt.title('Riemann Sum: Approximation of Area under the Curve')
+
+# Creating rectangles
+x_bar = np.linspace(a, b, n+1)[:-1]
+y_bar = f(x_bar + (b - a) / n)
+bar = ax.bar(x_bar, y_bar, width=(b - a) / n, align='edge', alpha=0.3, edgecolor='k')
+ax.set_xlabel('Time [s]')
+
+total_area = np.trapz(y, x)
+approx_area = riemann_sum(f, a, b, n)
+error = total_area - approx_area
+textString = f"Area = {total_area:.6f}\n~Area = {approx_area:.6f}\nError = {error:.6f}"
+props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+text = ax.text(0.03, 0.95, textString, transform=ax.transAxes, fontsize=10,
+        verticalalignment='top', bbox=props)
+
+# Adjust main plot to make room for the slider
+fig.subplots_adjust(bottom=0.25)
+
+# Make a horizontal slider to control the precision
+axfreq = fig.add_axes([0.25, 0.1, 0.65, 0.03])
+freq_slider = Slider(
+    ax=axfreq,
+    label='Precision',
+    valmin=3,
+    valmax=100,
+    valinit=n,
+    valfmt='%0.0f'
+)
+
+# The function to be called anytime the slider's value changes
+def update(val):
+    global bar, approx_area, error, text
+    n = int(val)
+    x_bar = np.linspace(a, b, n+1)[:-1]
+    y_bar = f(x_bar + (b - a) / n)
+    bar.remove()
+    bar = ax.bar(x_bar, y_bar, width=(b - a) / n, align='edge', alpha=0.3, edgecolor='k')
+
+    approx_area = riemann_sum(f, a, b, n)
+    error = total_area - approx_area
+    textString = f"Area = {total_area:.6f}\n~Area = {approx_area:.6f}\nError = {error:.6f}"
+    text.set_text(textString)
+
+    fig.canvas.draw_idle()
+
+freq_slider.on_changed(update)
+
+plt.show()
+\end{minted}
+
+\includegraphics[trim={0.5cm 0.75cm 0 0.5cm},clip]{pdfs/riemann_sum.pdf}
+
+In this report, we will explore the various applications of integrals in different fields. We will discuss how integrals are used to solve problems and provide examples of real-world applications. We will also examine the potential for future developments in the field of integral applications.
+
+By the end of this report, readers will have a better understanding of the importance of integrals in various fields and will appreciate the versatility of this fundamental mathematical concept.
+
+\newpage
+\subsection{Applications}
+\subsubsection{Physics}
+Integrals can be used to calculate quantities such as area, volume, and work, and are an essential tool for modeling physical systems and analyzing their behavior. In the field of physics, integrals are particularly important for understanding the relationship between force and potential energy in conservative systems. By integrating the force function, we can obtain the corresponding potential energy function, and use it to gain insights into the behavior of the system.
+
+For example, suppose we have a system where $F(x) = -kx$, where $k$ is a constant. We can find the corresponding potential energy function by integrating the force with respect to position:
+
+\begin{gather*}
+U(x) = -\int F(x) dx = -\int (-kx) dx = \frac{1}{2}kx^2 + C\\
+\text{where } C \text{ is a constant of integration}
+\end{gather*}
+
+We can plot both the force and potential energy functions to compare them. Here is an example plot for the case where $k=1$ and $C=0$:
+
+\begin{figure}[ht]
+\centering
+\hspace{0.5cm}\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,
+y=1cm]
+% Vẽ 2 trục, điền các số lên trục
+\draw[->] (-3.08,0) -- (3.06,0);
+\foreach \x in {-2,2}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) 
+node[below] { $\x$};
+\draw[->,color=black] (0,-2) -- (0,3.98);
+% \foreach \y in {-1}
+% \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) 
+% node[left] {\normalsize $\y$};
+\draw[color=black] (2.8,.3) node[right] {$x$};
+\draw[color=black] (.125,3.8) node[right] {\normalsize $y$};
+\draw[color=black] (0pt,-8pt) node[left] {\normalsize $O$};
+\clip(-3.08,-1.5) rectangle (3.1,3.25);
+%Vẽ đồ thị
+\draw[smooth,samples=100,domain=-4.08:2.06] 
+plot(\x,{-(\x)});
+% Vẽ thêm mấy cái râu ria
+\draw[dashed] (1,0) -- (1,-1) -- (0,-1);
+\draw[dashed] (0,2) -- (-2,2) -- (-2,0);
+\node at (1,0.3) {$1$};
+\node at (0.3,2) {$2$};
+\node at (-0.3,-1) {$-1$};
+\draw[shift={(0,3)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\node at (0.3,3) {$3$};
+\node at (-1.75,3) {$F(x)=-x$};
+\draw (0,0.2) -- (0.2,0.2) -- (0.2,0);
+%Vẽ dấu chấm tròn 
+\fill (0cm,0cm) circle (1.5pt); 
+\fill (1,-1) circle (1.5pt); 
+\fill (-2,2) circle (1.5pt); 
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\hspace{-1cm}\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,
+y=1cm]
+% Vẽ 2 trục, điền các số lên trục
+\draw[->] (-3.08,0) -- (3.06,0);
+\foreach \x in {-2,-1,1,2}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) 
+node[below] { $\x$};
+\draw[->,color=black] (0,-2) -- (0,3.98);
+\foreach \y in {-1,1,3}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) 
+node[left] {\normalsize $\y$};
+\draw[color=black] (2.8,.3) node[right] {$x$};
+\draw[color=black] (.125,3.8) node[right] {\normalsize $y$};
+\draw[color=black] (0pt,-8pt) node[left] {\normalsize $O$};
+\clip(-3.08,-1.5) rectangle (3.1,3.5);
+%Vẽ đồ thị
+\draw[smooth,samples=100,domain=-4.08:2.25] 
+plot(\x,{((\x)^2)/2});
+% Vẽ thêm mấy cái râu ria
+\draw[dashed] (2,0) -- (2,2) -- (-2,2) -- (-2,0);
+\node at (0.3,2.3) {$2$};
+\node at (2,3) {$U(x)=\dfrac{x^2}{2}$};
+\draw (0,0.2) -- (0.2,0.2) -- (0.2,0);
+%Vẽ dấu chấm tròn 
+\fill (0cm,0cm) circle (1.5pt); 
+\fill (2,2) circle (1.5pt); 
+\fill (-2,2) circle (1.5pt); 
+\end{tikzpicture}
+\end{minipage}
+\caption{Force function and potential energy function for a one-dimensional system.}
+\end{figure}
+
+As we can see from the plot, the force function is linear and the potential energy function is quadratic. The potential energy function is minimum at $x=0$, which is the equilibrium position where the force is zero.
+
+This example demonstrates how integrals can be used to analyze the relationship between force and potential energy in a physical system. By knowing the force, we can integrate to find the corresponding potential energy function and gain insights into the behavior of the system.
+
+% \newpage
+\subsubsection{Computer Graphics}
+Double integrals are a powerful tool in mathematics and have numerous applications in various fields, including computer graphics. One of these applications is in the calculation of volumes under curved surfaces. In computer graphics, double integrals can be used to calculate the volume under a 3D curve that is defined by a function of two variables, such as $z = f(x, y)$. This calculation is essential in creating 3D models, simulations, and animations. By using double integrals, computer graphic designers and animators can accurately calculate the volume under the surface of a 3D model, which is critical in creating realistic and accurate visual representations.
+
+\begin{figure}[ht]
+\begin{minipage}{0.515\textwidth}
+%
+\centering
+\tdplotsetmaincoords{70}{110}
+%
+% \hspace{-1cm}
+\begin{tikzpicture}[tdplot_main_coords,scale=1.75]
+	\tikzmath{function f(\x,\y) {return 1.5 + 0.5 * cos((0.5*\x + 0.75*\y) r);};}
+	\pgfmathsetmacro{\step}{pi/50.0}
+	\pgfmathsetmacro{\n}{8} % number of subinterals
+	\pgfmathsetmacro{\dx}{0.25}	% 
+	\pgfmathsetmacro{\dy}{0.25}	% 
+	\pgfmathsetmacro{\xi}{0}	% initial value of the domain for the x variable
+	\pgfmathsetmacro{\xf}{1.0*pi}	% final value of the domain for the x variable
+	\pgfmathsetmacro{\xe}{\xf+\step}	%	next value in the domain of the plot of the function
+	\pgfmathsetmacro{\xs}{\xi+\step} %	next value in the domain of the plot of the function
+	\pgfmathsetmacro{\yi}{0}	% initial value of the domain for the y variable
+	\pgfmathsetmacro{\yf}{1.0*pi}	% final value of the domain for the y variable
+	\pgfmathsetmacro{\ys}{\yi+\step}	% next value in the domain of the plot of the function
+	\pgfmathsetmacro{\ye}{\yf+\step}	%	next value in the domain of the plot of the function
+	\pgfmathsetmacro{\h}{2.0}	% domain for the z-axis.
+	% Limits of the region in the xy plane
+	\pgfmathsetmacro{\a}{0.75}	% range for the x interval [a, b]
+	\pgfmathsetmacro{\b}{\a+\n * \dx}	% range for the x interval [a, b]
+	\pgfmathsetmacro{\c}{0.5}	% range for the y interval [c, d]
+	\pgfmathsetmacro{\d}{\c+\n * \dx}	% range for the y interval [c, d]
+	% Next point in the grid for the cycles \foreach
+	\pgfmathsetmacro{\as}{\a+\dx}	% second value in the domain of the Riemann sum for the x variable
+	\pgfmathsetmacro{\cs}{\c+\dy}	% second value in the domain of the Riemann sum for the x variable
+	\pgfmathsetmacro{\ba}{\b-\dy}	% last value in the domain of the Riemann sum for the x variable
+	\pgfmathsetmacro{\da}{\d-\dy}	% last value in the domain of the Riemann sum for the x variable
+	% The coordinate axis
+	\draw[thick,->] (\xi-0.25,0,0) -- (\xf+0.1,0,0) node [below] {$x$}; % x axis
+	\draw[thick,->] (0,\yi-0.25,0) -- (0,\yf+0.1,0) node [right] {$y$}; % y axis
+	\draw[thick,->] (0,0,0) -- (0,0,\h+0.25,0) node [above] {$z = f(x,y)$}; 
+	% Grid of size \dx, \dy
+	\foreach \x in {\a,\as,...,\b}
+		\draw[very thin] (\x,\c,0) -- (\x,\d,0);
+	\foreach \y in {\c,\cs,...,\d}
+		\draw[very thin] (\a,\y,0) -- (\b,\y,0);
+	% The region
+	\draw[white] (\a,\d,0) -- (\b,\d,0) node [black,below,sloped,midway] {$R$};
+	\fill[gray!25] (\a,\c,0) -- (\b,\c,0) -- (\b,\d,0) -- (\a,\d,0) -- (\a,\c,0);
+	\draw[very thin] (\a,\c,0) -- (\b,\c,0) -- (\b,\d,0) -- (\a,\d,0) -- (\a,\c,0);
+	% The graphs on the surface that delimit the region of integration
+	\draw[blue,thick,opacity=0.75] plot[domain=\c:\d,smooth,variable=\t] ({\a},{\t},{f(\a,\t)});
+	\draw[blue,thick,opacity=0.5] plot[domain=\a:\b,smooth,variable=\t] ({\t},{\c},{f(\t,\c)});
+	% Riemann double sum
+	\foreach \x in {\a,\as,...,\ba}{
+		\foreach \y in {\c,\cs,...,\da}{
+			\pgfmathsetmacro{\px}{\x}
+			\pgfmathsetmacro{\py}{\y}
+			\pgfmathsetmacro{\zdA}{f(\px,\py)}
+			% Differential of area dA
+			\draw[fill=cyan,opacity=0.25] (\px,\py,0) -- (\px,\py+\dy,0) -- (\px+\dx,\py+\dy,0) -- (\px+\dx,\py,0) -- (\px,\py,0);			
+			% Boundary of the differential of volume
+			\draw[ultra thin,opacity=0.35] (\px,\py,0) -- (\px,\py,\zdA);
+			% Face parallel to the yz plane 
+			\fill[cyan,opacity=0.35] 
+				(\px+\dx,\py,0) -- (\px+\dx,\py,\zdA) -- (\px+\dx,\py+\dy,\zdA) 
+				-- (\px+\dx,\py+\dy,0) -- (\px+\dx,\py,0);
+			% Face parallel to the xz plane
+			\fill[cyan,opacity=0.35] 
+				(\px,\py+\dy,0) -- (\px,\py+\dy,\zdA) -- (\px+\dx,\py+\dy,\zdA) 
+				-- (\px+\dx,\py+\dy,0) -- (\px+\dx,\py+\dy,0);
+			\draw[thin] (\px+\dx,\py,0) -- (\px+\dx,\py,\zdA);
+			\draw[thin] (\px,\py+\dy,0) -- (\px,\py+\dy,\zdA);
+			\draw[thin,opacity=0.35] (\px+\dx,\py+\dy,0) -- (\px+\dx,\py+\dy,\zdA);
+			\draw[thin,opacity=0.35] (\px+\dx,\py,0) -- (\px+\dx,\py+\dy,0);
+			\draw[thin,opacity=0.35] (\px,\py+\dy,0) -- (\px+\dx,\py+\dy,0);
+			\draw[fill=cyan,opacity=0.5,draw=black] (\px,\py,\zdA) -- (\px+\dx,\py,\zdA) 
+					-- (\px+\dx,\py+\dy,\zdA) -- (\px,\py+\dy,\zdA) -- (\px,\py,\zdA);
+			\draw[thin,opacity=0.35] (\px+\dx,\py+\dy,0) -- (\px+\dx,\py+\dy,\zdA);
+			\draw[thin,opacity=0.35](\px,\py,\zdA) -- (\px+\dx,\py,\zdA) 
+					-- (\px+\dx,\py+\dy,\zdA) -- (\px,\py+\dy,\zdA) -- (\px,\py,\zdA);
+		}
+	}
+	% The surface: Quadrant I
+	\foreach \x in {0,\step,...,\xf}{
+		\draw[blue,opacity=0.25] plot[domain=0:\yf,smooth,variable=\t] ({\x},{\t},{f(\x,\t)});
+	}
+	\foreach \y in {0,\step,...,\yf}{
+		\draw[blue,opacity=0.25] plot[domain=0:\yf,smooth,variable=\t] ({\t},{\y},{f(\t,\y)});
+	}
+	% 
+	% The graphs on the surface that delimit the region of integration
+	\draw[blue,thick,opacity=0.75] plot[domain=\c:\d,smooth,variable=\t] ({\b},{\t},{f(\b,\t)});
+	\draw[blue,thick,opacity=0.75] plot[domain=\a:\b,smooth,variable=\t] ({\t},{\d},{f(\t,\d)});
+\end{tikzpicture}
+% \captionsetup{format=labelstyle, justification=raggedright}
+\caption{Double integral virtualization}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \vspace{0.5cm}
+    Volume under $f(x,y)$ bounded by a given region $R$ defined by $x\in\left[a,b\right]$ and $y\in\left[c,d\right]$ is
+    $$\iint_R f(x,y)dA=\int_a^b\int_c^d f(x,y)\;dy\;dx$$
+    $$\text{where}\ dA=dx\;dy$$
+\end{minipage}
+\end{figure}
+
+To enhance the exploration and understanding of various functions, we have developed a Python code that allows users to input functions in terms of $x$ and $y$, as well as define the corresponding domains. Running the program enables users to visualize the function's graph and wireframe volume, providing valuable insights into its properties. This interactive simulation offers a dynamic and visually engaging platform to analyze and gain a deeper comprehension of diverse functions. Below is the code:\\[-0.3cm]
+
+\begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# User input for f(x) function
+try:
+    fxy = input("Enter the function f(x, y): ")
+    f = lambda x, y: eval(fxy)
+except Exception as e:
+    print("Error:", e)
+    print("Please enter a valid function expression.")
+
+def simulate_double_integral():
+    """Simulates a double integral and plots the result"""
+    while True:
+        try:
+            x_min, x_max = map(float, input("Enter x-min and x-max (space-separated): ").split())
+            y_min, y_max = map(float, input("Enter y-min and y-max (space-separated): ").split())
+            break
+        except ValueError:
+            print("Invalid input. Please enter valid numeric values.")
+
+    num_points = 100  # Number of points in each dimension
+
+    x = np.linspace(x_min, x_max, num_points)
+    y = np.linspace(y_min, y_max, num_points)
+    X, Y = np.meshgrid(x, y)
+    Z = f(X, Y)
+
+    # Calculate the volume under the surface using the trapezoidal rule
+    while True:
+        try:
+            volume = np.trapz(np.trapz(Z, dx=(x_max - x_min) / (num_points - 1), axis=0), dx=(y_max - y_min) / (num_points - 1))
+            break
+        except Exception as e:
+            print("Error:", e)
+            print("Please enter a valid function expression.")
+            Z = f(X, Y)
+
+    # Plotting the result
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    # 3D surface plot
+    ax.plot_surface(X, Y, Z, cmap='viridis', alpha=1.0)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('f(X, Y)')
+
+    # Set the z-axis limits based on function values
+    z_min, z_max = np.min(Z), np.max(Z)
+    if z_min >= 0:
+        ax.set_zlim(0, z_max)
+    elif z_max <= 0:
+        ax.set_zlim(z_min, 0)
+    else:
+        ax.set_zlim(z_min, z_max)
+
+    # Rotate the camera to a different view
+    ax.view_init(elev=30, azim=45) 
+
+    # Projection on XY-plane
+    ax.contourf(X, Y, Z, zdir='z', offset=0, cmap='viridis', alpha=0.3)
+
+    # Draw dashed lines from surface to base
+    ax.plot([x_min, x_min], [y_min, y_min], [0, Z[0, 0]], 'k--')
+    ax.plot([x_max, x_max], [y_min, y_min], [0, Z[0, -1]], 'k--')
+    ax.plot([x_min, x_min], [y_max, y_max], [0, Z[-1, 0]], 'k--')
+    ax.plot([x_max, x_max], [y_max, y_max], [0, Z[-1, -1]], 'k--')
+
+    # Draw boundary dashed lines
+    ax.plot(x, y_min * np.ones_like(x), zs=0, linestyle='dashed', color='black')
+    ax.plot(x, y_max * np.ones_like(x), zs=0, linestyle='dashed', color='black')
+    ax.plot(x_min * np.ones_like(y), y, zs=0, linestyle='dashed', color='black')
+    ax.plot(x_max * np.ones_like(y), y, zs=0, linestyle='dashed', color='black')
+
+    plt.title(f"Volume: {volume:.6f}")
+    plt.show()
+
+# Run the simulation
+simulate_double_integral()
+\end{minted}
+
+Input and Result:\\[-0.35cm]
+\begin{center}
+\efbox{\includegraphics[]{images/input_double_integral.png}}
+\includegraphics[trim={0.5cm 1cm 0 0.35cm},clip]{pdfs/double_integral.pdf}
+\end{center}
+
+
+Moreover, the more advanced tool, triple integrals, is even more powerful than double integrals, as they can calculate volumes of 3D objects that are more complex. Triple integrals can integrate over a region in 3D space, whereas double integrals can integrate only on a 2D plane. In summary, both double and triple integrals are powerful mathematical tools with numerous real-world applications, especially in fields such as computer graphics.
+
+
+
+
+
+% \newpage
+\subsubsection{Signal Processing}
+
+Integrals are a fundamental mathematical tool used in many engineering applications, particularly in the analysis of signals and systems. One important application of integrals is in the field of audio engineering, where they are used to analyze and manipulate sound signals. The Fourier Transform is a mathematical technique that uses integrals to extract frequency components of a signal, and it is widely used in audio engineering.
+
+The Fourier Transform is a widely used algorithm for calculating the Fourier Transform of discrete-time signals. It is used to plot the amplitude of sound waves as a function of frequency. Engineers use Fourier Transform to sample the sound signal at regular intervals, then apply the algorithm to the signal, which calculates the amplitude of the signal at different frequencies. The resulting plot shows the amplitude of the signal at each frequency, allowing engineers to identify the different frequency components of the sound wave.
+
+Continuous-time Fourier Transform have this basic formula:
+
+\begin{gather*}
+X(f)=\int_{-\infty}^{\infty} x(t)e^{-j2\pi ft} dt\\
+\text{where } f \text{ is the frequency, } x(t) \text{ is signal with respect to time}
+\end{gather*}
+
+To simplify the process, we utilize an external Python package in our Python code to simulate the sound wave using the Fast Fourier Transform:\\[-0.3cm]
+
+\begin{minted}{Python}
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.fftpack import fft
+from scipy.io import wavfile
+
+sr, data = wavfile.read('sample.wav')
+print(data.shape, sr)
+signal = data[:sr,0]
+Signal = fft(signal)
+fig, (axt, axf) = plt.subplots(2, 1, constrained_layout=1, figsize=(11.8,3))
+axt.plot(signal, lw=0.15) ; axt.grid(1)
+axf.plot(np.abs(Signal[:sr//2]), lw=0.15) ; axf.grid(1)
+plt.show()
+\end{minted}
+
+% \begin{tikzpicture}[samples=200, domain=0:5*360]
+%         \begin{axis}[
+%             width=10cm, height=4cm,
+%             enlarge x limits=false,
+%             xtick=\empty,
+%             axis lines*=middle,
+%             hide y axis
+%         ]
+%         \addplot [no markers, smooth] {sin(x)+rand};
+%         \end{axis}
+%     \end{tikzpicture}
+
+\vspace{0.45cm}
+
+\begin{figure}[ht!]
+    \begin{center}
+        \input{histogram.pgf}
+    \end{center}
+    \caption{A PGF histogram from \texttt{matplotlib}}
+\end{figure}
+
+Fourier Transform has many practical applications in engineering, such as in audio processing, communication systems, and control systems. For example, engineers may use Fourier Transform to analyze the frequency content of a speech signal and filter out noise or other unwanted components. They may also use Fourier Transform to design audio filters or equalizers that selectively amplify or attenuate specific frequency ranges of a sound signal. In summary, the use of integrals, particularly in the analysis of signals and systems using Fourier Transform, is a powerful technique that has many practical applications in audio and signal processing.
+
+% \newpage
+% \subsection{Music}
+% One simple application of integrals in music is in the calculation of the total energy of a sound signal. The total energy of a sound signal is proportional to the area under the squared waveform, which can be calculated using an integral.
+
+% In mathematical terms, if we denote the sound signal as $f(t)$, the total energy $E$ with the integral is taken over the entire duration of the sound signal can be calculated as
+
+% $$E = \int\left[f(t)\right]^2 dt$$
+
+% For instance, the provided graph displays the energy of an audio sine wave over time. The shaded area under the blue curve represents the total energy of the signal, which is the sum of the energies of its individual components, and the dashed line marks the end of the signal.
+
+% \vspace{0.5cm}
+
+% \newcommand{\mysin}[1]{plot[domain=#1, samples=300] (\x,{sin(2*\x r)+sin(3*\x r)+1.906})}
+% \begin{center}
+% \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,
+% y=1cm]
+%     % area under sin 
+%     \fill[cyan!30!white] \mysin{0:4} -- (4,0) -- (0,0) -- cycle;
+%     \draw[black, ->] (0,0) -- (4.5, 0);
+%     \draw[black, ->] (0,0) -- (0,4.5);
+%     \draw[color=black] (4.3,.3) node[right] {$t$};
+%     \draw[color=black] (.125,4.3) node[right] {\normalsize $f(t)$};
+%     \draw[color=black] (0pt,-8pt) node[below, xshift=-0.1cm, yshift=0.2cm] {\normalsize $O\equiv a$};
+%     \fill (0cm,0cm) circle (1.5pt); 
+%     % \fill (0,1.906) circle (1.5pt); 
+%     % \fill (4,2.359) circle (1.5pt); 
+%     % sin
+%     \draw[blue, -, very thick] \mysin{0.0125:4};
+
+%     \draw[dashed] (4,2.359) -- (4,0);
+%     \draw[shift={(4,0)},color=black] (0pt,-2pt) -- (0pt,2pt)  node[below, yshift=-0.175cm] {\normalsize $b$};
+% \end{tikzpicture} 
+% \end{center}
+
+% This calculation can be useful for analyzing the loudness or intensity of a sound signal. For example, in audio engineering, the total energy of a music track can be used to ensure that the overall loudness of the track is balanced and does not exceed a certain level that could cause distortion or damage to speakers or listeners' ears.
+
+% Overall, this is a simple but practical application of integrals in music that can demonstrate how mathematical tools can be used to solve real-world problems in audio engineering and music production.
+
+% \newpage
+\subsubsection{Sculpting}
+
+Integrals are commonly used in engineering to design structures with complex shapes, where calculating the amount of material needed to construct a structure with a variable cross-sectional area is critical. This is particularly important in industries such as aerospace and automotive engineering, where weight and strength are key factors.
+
+\vspace{0.6cm}
+
+\begin{figure}[h]
+\centering
+\tdplotsetmaincoords{80}{30}%
+\begin{tikzpicture}[tdplot_main_coords,scale=0.6,
+	line cap=butt,line join=round,%trig format=rad,
+	declare function={%
+	  R(\u)=1.5+sin(\u*45)/(2+\u/8);%<- input
+	  Rprime(\u)=(R(\u+0.01)-R(\u-0.01))/0.02;%<- numerical derivative
+	  a=cos(\tdplotmainphi)*sin(\tdplotmaintheta);% see equation {eq:vcrit}
+	  b=-1*cos(\tdplotmaintheta);%	
+	  c(\u)=sin(\tdplotmaintheta)*sin(\tdplotmainphi)*Rprime(\u);%
+      sv1(\u)=-((b*c(\u)+sqrt(a*a+b*b-c(\u)*c(\u))*abs(a))/(a*a+b*b));% see equation {eq:cvandsv}
+	  sv2(\u)=(-(b*c(\u))+sqrt(a*a+b*b-c(\u)*c(\u))*abs(a))/(a*a+b*b);%
+	  cv1(\u)=-((a*c(\u)+sqrt(a*a+b*b-c(\u)*c(\u))*abs(b))/(a*a+b*b));%
+	  cv2(\u)=(-(a*c(\u))+sqrt(a*a+b*b-c(\u)*c(\u))*abs(b))/(a*a+b*b);%
+	},
+	icircle/.style={thick},
+	iplane/.style={fill=white,fill opacity=0.8},
+	iline/.style={semithick},
+ 	extra/.code={},annot/.code={\tikzset{extra/.code={#1}}}]
+ \newcommand\DrawIntersectingPlane[2][]{%
+  \begin{scope}[canvas is yz plane at x=#2,transform shape,#1]
+	 \draw[iplane] (3,3) -- (-3,3) -- (-3,-3)-- (3,-3) -- cycle;
+	 \draw[icircle]  (0,0) circle[radius={R(#2)}];
+	 \tikzset{extra}
+  \end{scope}}
+ %
+ \draw[iline] (-1,{-1.5*5/4},-2.25) -- (0,{-1.5},-2.25);
+ \DrawIntersectingPlane[annot={%
+ 	\path (2.9,2.9) node[below left,transform shape]{$P$};
+	\draw (2,3) arc[start angle=180,end angle=270,radius=1];
+	\draw[dashed] (-1.5,-2.25) node[below,transform shape=false]{$a$} -- (-1.5,0);
+	}]{0}
+ \draw[iline] (0,{-1.5},-2.25) -- (4,0,-2.25);
+ \draw[thick,smooth,variable=\u,domain=0:4] 
+ 	plot  (\u,{R(\u)*cv1(\u)},{R(\u)*sv1(\u)})
+ 	plot  (\u,{R(\u)*cv2(\u)},{R(\u)*sv2(\u)});
+ \DrawIntersectingPlane[icircle/.append style={pattern={Lines[angle=70,distance={3pt}]}},
+    annot={%
+	\draw[dashed] (0,-2.25) node[below,transform shape=false]{$x$} -- (0,-1.5);
+	}]{4}
+ \draw[iline] (4,0,-2.25) -- (8,1.5,-2.25);
+ \draw[thick,smooth,variable=\u,domain=4:8] 
+ 	plot  (\u,{R(\u)*cv1(\u)},{R(\u)*sv1(\u)})
+ 	plot  (\u,{R(\u)*cv2(\u)},{R(\u)*sv2(\u)});
+ ;
+ \DrawIntersectingPlane[annot={%
+ 	\path (2.9,2.9) node[below left,transform shape]{$Q$};
+	\draw (2,3) arc[start angle=180,end angle=270,radius=1];
+	\draw[dashed] (1.5,-2.25) node[below,transform shape=false]{$b$} -- (1.5,0);
+	}]{8}
+ \draw[iline] (8,1.5,-2.25) -- (9,{1.5*5/4},-2.25) ;
+\end{tikzpicture}
+\caption{Screen projection of a surface of revolution.}
+\label{fig:example}
+\end{figure}
+
+Similarly, integrals are used in pottery sculpting to create pots with specific volumes. By integrating the cross-sectional area function over the height of the pot, potters can determine the total volume of clay needed to create the pot, which allows them to create pots with specific volumes for cooking and serving purposes.
+
+\vspace{0.375cm}
+
+\begin{figure}[h]
+\centering
+\begin{minipage}{0.4\textwidth}
+    \tdplotsetmaincoords{60}{130}
+	\begin{tikzpicture}[tdplot_main_coords]
+		% The function that is rotated
+		\tikzmath{function f(\x) {return 1.5 - 0.35*sin(\x r);};}
+		\pgfmathsetmacro{\dominio}{2.0}
+		\pgfmathsetmacro{\xi}{-\dominio}
+		\pgfmathsetmacro{\step}{(\dominio-\xi)/70.0}
+		\pgfmathsetmacro{\xs}{\xi+\step}
+		\pgfmathsetmacro{\max}{3}
+		% Circumferences (behind the coordiante axis)
+		\foreach \x in {\xi,\xs,...,\dominio}{
+			\pgfmathsetmacro{\radio}{f(\x)}	% radius of the circumference of the solid of revolution
+			\draw[cyan,very thick,opacity=0.35] plot[domain=0.5*pi:2.0*pi,smooth,variable=\t] ({\radio*cos(\t r)},{\x},{\radio*sin(\t r});	
+		}
+		% Part of the solid of revolution behind the coordinate axis
+		\foreach \angulo in {358,356,...,90}{
+			\draw[cyan,very thick,rotate around y=\angulo,opacity=0.35] plot[domain=-\dominio:\dominio,smooth,variable=\t] ({0},{\t},{f(\t)});
+		}
+		% Graph of the function rotated about the $y$ axis
+		\draw[red,ultra thick] plot[domain=-\dominio:\dominio,smooth,variable=\t] ({0},{\t},{f(\t)}) node [above right, yshift=0.25cm] {$z = f(y)$};
+		% Coordinate axis
+		\draw[thick,->] (0,0,0) -- (0,3.75,0) node [right] {$y$};
+		\draw[thick,->] (0,0,0) -- (4.15,0,0) node [left] {$x$};
+		\draw[thick,->] (0,0,0) -- (0,0,3.75) node [above] {$z$};
+		% Circumferences (in front of the coordiante axis)
+		\foreach \x in {\xi,\xs,...,\dominio}{
+			\pgfmathsetmacro{\radio}{f(\x)}	% Radio del círculo al inicio del sólido de revolución
+			\draw[cyan,very thick,opacity=0.35] plot[domain=0.0:0.5*pi,smooth,variable=\t] ({\radio*cos(\t r)},{\x},{\radio*sin(\t r});	
+		}
+		% The solid of revolution (in front of the coordinate axis)
+		\foreach \angulo in {0,2,...,89}{
+			\draw[cyan,very thick,rotate around y=\angulo,opacity=0.35] plot[domain=-\dominio:\dominio,smooth,variable=\t] ({0},{\t},{f(\t)});
+		}
+	\end{tikzpicture}
+ \caption{Surface of revolution}
+\end{minipage}
+\hspace{1.5cm}
+\begin{minipage}{0.4\textwidth}
+\centering
+    Surface area around the y-axis is
+    $$\int_a^b \left(2\pi f(y) \sqrt{1+\left(f'(y)\right)^2}\right)\;dy$$
+    with the domain $y\in[a,b]$
+\end{minipage}
+\end{figure}
+
+Overall, integrals play a critical role in these fields by enabling the calculation of volumes and amounts of material needed to construct a structure or create a pot with a variable cross-sectional area. The ability to calculate volumes accurately is essential, as it ensures that structures and pots are both functional and efficient.
+
+\subsubsection{Civil Engineering}
+
+The application of integral in calculating the length of a curve is particularly relevant in civil engineering when designing roads and bridges. In designing these structures, curves are often used to navigate around obstacles or to follow natural contours of the landscape. By calculating the length of these curves, engineers can accurately determine the amount of materials needed and ensure the safety and efficiency of the structure.
+
+\vspace{0.25cm}
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\scalebox{1.75}{\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,
+y=1cm]
+% Vẽ 2 trục, điền các số lên trục
+\draw[->] (-0.5,0) -- (3.25,0);
+% \foreach \x in {1,2}
+% \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) 
+% node[below] { $\x$};
+\draw[->,color=black] (0,-0.5) -- (0,3);
+% \foreach \y in {-1}
+% \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) 
+% node[left] {\normalsize $\y$};
+\draw[color=black] (3.15,.3) node[right] {$x$};
+\draw[color=black] (-.45-.125,2.8) node[right] {\normalsize $y$};
+\draw[color=black] (0pt,-8pt) node[left] {\normalsize $O$};
+\clip(-1,-1) rectangle (3.5,3.5);
+%Vẽ đồ thị
+\draw[line width=0.1mm, smooth,samples=100,domain=0.5:2.333] 
+plot(\x,{(\x-1)^3-2*(\x-1)^2+2});
+\draw[thick, smooth,samples=100,domain=0.6797:0.8+0.25] 
+plot(\x,{(\x-1)^3-2*(\x-1)^2+2});
+% Vẽ thêm mấy cái râu ria
+\draw[dashed] (0.5,1.375) -- (0.5,0);
+\draw[dashed] (2.333,0.815) -- (2.333,0);
+% \node at (1,0.3) {$1$};
+\node at (0.5,-0.25) {\tiny $a$};
+\node at (2.333,-0.25) {\tiny $b$};
+\draw[shift={(0.5,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[shift={(2.333,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[dashed] (0.5,1.375) -- (0,1.375);
+\draw[dashed] (2.333,0.815) -- (0,0.815);
+\node at (-0.3,1.375) {\tiny $f(a)$};
+\node at (-0.3,0.815) {\tiny $f(b)$};
+\draw[shift={(0.5,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[shift={(2.333,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+% \node at (0.3,3) {$3$};
+% \node at (-1.75,3) {$F(x)=-x$};
+% \draw (0,0.2) -- (0.2,0.2) -- (0.2,0);
+%Vẽ dấu chấm tròn 
+\fill (0cm,0cm) circle (1.5pt); 
+\fill (0.5,1.375) circle (1.5pt); 
+\fill (2.333,0.815) circle (1.5pt); 
+
+% 0.8 pm .25, 1.912 pm .15
+\draw[line width=0.075mm] (0.55,2.062) -- (1.05, 2.062) -- (1.05, 1.762) -- (0.55,1.762) -- (0.55,2.062);
+\fill [blue!50, opacity=0.25] (0.8+.25,1.912+.15) rectangle (0.8-.25,1.912-.15);
+
+\draw[dotted, line width=0.1mm] (0.55,2.062) -- (2-.75,3+.45); 
+\draw[dotted, line width=0.1mm] (1.05, 2.062) -- (2+.75,3+.45);
+\draw[dotted, line width=0.1mm] (1.05, 1.762) -- (2+.75,3-.45);
+\draw[dotted, line width=0.1mm] (0.55,1.762) -- (2-.75,3-.45);
+
+% \fill (2,3) circle (1.5pt); 
+\draw (2-.75,3+.45) -- (2+.75,3+.45) -- (2+.75,3-.45) -- (2-.75,3-.45) -- (2-.75,3+.45);
+\fill [blue!10, opacity=0.9] (2+.75,3+.45) rectangle (2-0.75,3-0.45);
+
+\draw[thick, smooth,samples=100,domain=1.639:2.75] 
+plot(\x,{3*((((\x-1.2+1.6)/3)-1)^3-2*(((\x-1.2+1.6)/3)-1)^2+2)-3.824+1.088});
+
+\draw (1.639+0.555-0.4,2.773) -- (1.639+0.555+0.25,3.247) -- (1.639+0.555+0.25,2.773) -- (1.639+0.555-0.4,2.773);
+\draw (1.639+0.555+0.25,2.773+0.05) -- (1.639+0.555+0.25-0.05,2.773+0.05) -- (1.639+0.555+0.25-0.05,2.773);
+\node at (1.639+0.555+0.25+0.15, 3.010) {\scalebox{.45}{$\Delta y$}};
+\node at (2.119, 2.773-0.1) {\scalebox{.45}{$\Delta x$}};
+
+\node at (2.119-.175, 3.010+.175) {\scalebox{.45}{$\Delta S$}};
+
+\end{tikzpicture}}
+\vspace{-1cm}
+\caption{Arc length of a function}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+
+From the graph, we can approximate\\
+arc length of the function:
+
+$$\sum \Delta S=\sum\lim_{\Delta x\rightarrow 0} \sqrt{1+\left(\dfrac{\Delta y}{\Delta x}\right)^2}$$
+
+\vspace{0.3cm}
+
+Arc length of a function $y=f(x)$\\
+with $x\in[a,b]$ is
+$$\int_a^b \sqrt{1+(f'(x))^2}\;dx$$
+\end{minipage}
+\end{figure}
+
+By accurately calculating the length of curves in road and bridge design, engineers can also minimize the impact on the environment. By following natural contours of the landscape, curves can be designed to avoid environmentally sensitive areas such as wetlands or forests.
+
+Overall, the application of calculating the length of curves is crucial in civil engineering, particularly in designing roads and bridges. Accurately calculating the length of these curves can ensure the safety and efficiency of the structure, minimize environmental impact, and reduce unnecessary costs.
+
+
+
+
+\newpage
+\section{Differential Equation}
+\subsection{Theoretical Basis}
+A differential equation is a mathematical equation that relates an unknown function to its derivatives. It involves the concept of rates of change and describes the relationship between a function and its derivatives. Differential equations play a fundamental role in various fields of science, engineering, and mathematics, providing a powerful tool for modeling and understanding dynamic systems.
+
+In general, a differential equation can be written in the form:
+
+$$g(x)=f_n(x)\dfrac{d^ny}{dx^n}+\cdots+f_1(x)\dfrac{dy}{dx}+f_0(x)y$$
+
+such that:
+
+$$y(x_0)=y_0,\ y'(x_0)=y'_0,\ y''(x_0)=y''_0,\dots$$
+
+For any nonzero $f_n(x)$, if $\left\{f_0, f_1, \dots\right\}$ and $g$ are continuous on some interval containing $x_0, y$ is unique and exists.
+
+Solving a differential equation means finding the function $y$ that satisfies the equation. This typically involves finding an expression for $y$ in terms of $x$ or determining its behavior. Solutions to differential equations can be obtained through analytical methods, such as separation of variables, integration, or using specific techniques for different types of equations. Numerical methods and computer simulations are also widely used to approximate solutions for complex differential equations.
+
+This is the Matlab script that we have developed to calculate the exact solution while inputting the differential equation:\\[-0.3cm]
+
+\begin{minted}{matlab}
+clc; clearvars;
+
+% User input for the derivative function dy/dt
+dydt_func = input("Enter the derivative function dy/dt: ", 's');
+
+% User input for the initial condition y0
+y0 = input("Enter the initial condition y0: ");
+
+% Define the time range for simulation
+t_min = 0;
+t_max = input("Enter the duration: ");
+
+% Generate the time values
+t_exact = linspace(t_min, t_max);
+
+% Convert the derivative function to a function handle
+dydt = str2func(['@(t, y)', dydt_func]);
+
+% Solve the ODE using ode45
+[t, y] = ode45(@(t, y) dydt(t, y), t_exact, y0);
+
+% Plot the numerical solution
+plot(t, y, 'r-', 'LineWidth', 1, 'MarkerSize', 20)
+
+% Define the symbolic variable
+syms y(t)
+
+% Solve the ODE symbolically using dsolve
+exact_sol = dsolve(diff(y,t) == dydt(t, y), y(0) == y0);
+
+% Set the plot title as the exact solution
+title(['Exact Solution: ', char(exact_sol)]);
+
+\end{minted}
+
+Input and Result:\\[-0.35cm]
+\begin{center}
+\efbox{\includegraphics[]{images/input_ode.png}}
+\includegraphics[trim={3.6cm 8.35cm 3.25cm 8cm},clip,scale=0.75]{pdfs/ode.pdf}
+\end{center}
+
+
+Differential equations have broad applications in diverse areas, including physics, engineering, biology, economics, and more. They provide a powerful framework for modeling dynamic systems, predicting behavior, and understanding the underlying principles governing various phenomena. By studying and analyzing differential equations, we can gain insights into the behavior and dynamics of real-world systems, making them an essential tool in scientific research and problem-solving.
+
+\newpage
+\subsection{Applications}
+
+\subsubsection{Growth and Decay}
+Growth and decay are fundamental concepts that occur in various natural and man-made systems. Whether it's the growth of a population, the decay of a radioactive substance, or the depreciation of an asset, understanding and modeling these processes are essential in many fields. Ordinary differential equations provide a powerful framework for studying growth and decay phenomena by expressing the rate of change of a quantity as a function of its current value.
+
+By solving these equations, we can analyze the dynamics, predict future behavior, and make informed decisions. The application of ordinary differential equations to growth and decay processes enables us to gain insights into the underlying mechanisms and optimize outcomes in fields such as biology, economics, physics, and more.
+
+Let's consider an example of population growth or decay using an ordinary differential equation. Suppose we have a population of bacteria, and we want to model the growth or decay of this population over time.
+
+Let $N(t)$ represent the population size at time $t$. If we assume that the rate of change of the population is proportional to the population itself, we can express this relationship using the following ordinary differential equation:
+
+\begin{gather*}
+\dfrac{dN}{dt} = kN(t)\\
+\text{where } k \text{ is constant that determines the growth or decay rate}
+\end{gather*}
+
+To solve this ordinary differential equation, we can separate the variables, integrate both sides, and then simplify by exponentiating both sides:
+
+$$
+\begin{aligned}
+\dfrac{1}{N(t)} dN = kdt&\Rightarrow \int\dfrac{1}{N} dN = \int k dt\\
+&\Leftrightarrow \ln|N(t)| = kt + C^*\\
+&\Leftrightarrow N(t) = \pm e^{C^*}e^{kt} = Ce^{kt}\\
+\end{aligned}
+$$
+
+The equation $N(t) = Ce^{kt}$ represents the general solution to the ordinary differential equation governing population growth or decay. The constant $C$ represents the initial population size at $t = 0$.
+
+By specifying the initial condition $N(0) = N_0$, we can determine the particular solution for a specific scenario:
+
+$$N(t) = N_0 e^{kt}$$
+
+This equation allows us to predict the population size $N(t)$ at any given time t based on the initial population size $N_0$ and the growth or decay rate represented by the constant k.
+
+In summary, ordinary differential equations provide a mathematical framework to model growth and decay processes in various systems, including population dynamics. By solving these equations, we can understand and predict the behavior of the system over time, making them valuable tools in the field of mathematical modeling and analysis.
+
+\subsubsection{Pursuit Curve}
+
+Pursuit curves find practical applications in various real-life scenarios, demonstrating the relevance of ordinary differential equations. One such application is in the field of aerospace engineering, particularly in the tracking and interception of flying objects. Consider a scenario where a rocket or a missile aims to intercept a target moving through space. By modeling the motion of the target and the rocket using differential equations, engineers can determine the trajectory that the rocket should follow to intercept the target successfully. The pursuit curve, derived from the solution of the differential equation, provides the desired path for the rocket to pursue and eventually reach the target.
+
+Pursuit curves find applications in robotics and autonomous navigation, such as tracking moving targets for autonomous drones and self-driving cars. By using differential equations, engineers can develop algorithms to calculate optimal trajectories and maintain desired positions relative to the target, enabling accurate and efficient tracking.
+
+In the field of animal behavior and predator-prey dynamics, pursuit curves offer insights into predator-prey interactions. Differential equations are used to model the movements of predators and prey, allowing ecologists and biologists to understand the strategies employed by predators and the evasive maneuvers adopted by prey. The pursuit curve derived from these equations sheds light on the dynamics of natural predator-prey relationships.
+
+To gain a clearer understanding of this topic, we have developed a Matlab program that simulates the trajectories of two objects. By specifying a unit velocity vector for object 1 and the duration of the simulation, the program allows the second object to pursue and chase the first object, forming a pursuit curve. Below is the code:\\[-0.3cm]
+
+\begin{minted}{matlab}
+clc; clearvars;
+
+% User input for the positions of points A and B
+posA = input("Enter the position of point A [x, y]: ");
+x1 = posA(1);
+y1 = posA(2);
+% User input for the vector A
+A = input("Enter the vector A [x, y]: ");
+A = A / norm(A);  % Convert A to a unit vector
+
+posB = input("Enter the position of point B [x, y]: ");
+x2 = posB(1);
+y2 = posB(2);
+
+% User input for the duration of the simulation
+duration = input("Enter the duration of the simulation: ");
+
+% Define the velocity of point A
+v = 1;
+
+% Set the time span
+tspan = [0 duration];
+
+% Define the initial conditions
+initial_condition = [x1, y1, x2, y2];
+
+% Solve the system of ordinary differential equations
+[t, positions] = ode45(@(t, y) pursuitCurve(t, y, v, A), tspan, initial_condition);
+
+% Extract the positions of points A and B
+x1 = positions(:, 1);
+y1 = positions(:, 2);
+x2 = positions(:, 3);
+y2 = positions(:, 4);
+
+% Animate the pursuit curve
+figure;
+for i = 1:length(t)
+    plot(x1(i), y1(i), 'ro', 'MarkerSize', 10, 'MarkerFaceColor', 'r');  % Point A
+    hold on;
+    plot(x2(i), y2(i), 'bo', 'MarkerSize', 10, 'MarkerFaceColor', 'b');  % Point B
+    plot(x1(1:i), y1(1:i), 'r-', 'LineWidth', 2);  % Trajectory of point A
+    plot(x2(1:i), y2(1:i), 'b--', 'LineWidth', 2);  % Trajectory of point B
+    xlim([min([x1; x2])-1, max([x1; x2])+1]);
+    ylim([min([y1; y2])-1, max([y1; y2])+1]);
+    xlabel('x');
+    ylabel('y');
+    title('Pursuit Curve Simulation');
+    grid on;
+    hold off;
+    pause(0.1);
+end
+
+% Function defining the system of ordinary differential equations
+function dydt = pursuitCurve(~, y, v, A)
+    x1 = y(1);
+    y1 = y(2);
+    x2 = y(3);
+    y2 = y(4);
+    
+    dx1dt = v * A(1);
+    dy1dt = v * A(2);
+    dx2dt = (x1 - x2) / norm([x1 - x2, y1 - y2]);
+    dy2dt = (y1 - y2) / norm([x1 - x2, y1 - y2]);
+    
+    dydt = [dx1dt; dy1dt; dx2dt; dy2dt];
+end
+\end{minted}
+
+Input and Result:\\[-0.35cm]
+
+\begin{center}
+\efbox{\includegraphics[]{images/input_pursuit_curve.png}}
+\includegraphics[trim={3.6cm 8.35cm 3.25cm 8cm},clip,scale=0.75]{pdfs/pursuit_curve.pdf}
+\end{center}
+
+In summary, pursuit curves derived from ordinary differential equations have practical applications in diverse fields such as aerospace engineering, robotics, and ecology. By formulating pursuit problems as differential equations, engineers and scientists can devise optimal strategies for tracking and intercepting targets, design autonomous systems capable of following moving objects, and gain insights into predator-prey dynamics. These real-life applications demonstrate the significance of differential equations and the pursuit curve concept in solving complex problems and understanding dynamic systems.
+
+\subsubsection{Disease Prediction}
+
+The $SEIR$ model is an extension of the $SIR$ model\footnote{Compartmental models in epidemiology: \url{https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology}} that incorporates an additional compartment to represent individuals who are Exposed ($E$) to the disease but not yet infectious. This model is particularly useful for studying diseases with an incubation period, such as COVID-19. The $SEIR$ model is based on a system of ordinary differential equations that describe the transitions between the compartments.
+
+Let's consider an example of using the $SEIR$ model to make predictions about COVID-19. The following set of differential equations represents the $SEIR$ model:
+
+$$
+\begin{aligned}
+\dfrac{dS}{dt} &= \mu-dS-\beta S I\\[0.2cm]
+\dfrac{dE}{dt} &= \beta S I - (d+\alpha) E\\[0.2cm]
+\dfrac{dI}{dt} &= \alpha E - (d+\gamma) I\\[0.2cm]
+\dfrac{dR}{dt} &= \gamma I - dR\\[0.2cm]
+\end{aligned}
+$$
+
+Here, $S(t)$, $E(t)$, $I(t)$, and $R(t)$ represent the number of susceptible, exposed, infected, and recovered individuals at time $t$, respectively. $\beta$ represents the effective contact rate, $\alpha$ represents the rate at which exposed individuals become infectious, and $\gamma$ represents the recovery rate. Here is the flow chart for $SEIR$ model:
+
+\usetikzlibrary{arrows.meta,positioning}
+\begin{center}
+\begin{tikzpicture}[node distance=1.75cm and 1.5cm, auto,
+>=Latex,every node/.append style={align=center}, 
+int/.style={draw, minimum size=1.6cm}]
+\node [int] (a) {$S$}; 
+\node (b) [left of=a, coordinate] {a}; 
+\node [int] (c) [right=of a] {$E$}; 
+\node (c1) [below=of a, coordinate] {c1}; 
+\node (c2) [below=of c, coordinate] {c2};
+\node [int] (d) [right=of c] {$I$}; 
+\node (c3) [below=of d, coordinate] {c3};
+\node [int] (e) [right=of d] {$R$}; 
+\node (c4) [below=of e, coordinate] {c4};
+\path[->] (b) edge node {$\mu$} (a)
+   (a) edge node {$\beta SI$} (c) edge node {$dS$} (c1)
+   (c) edge node {$\alpha E$} (d) edge node {$dE$} (c2) 
+   (d) edge node {$\gamma I$} (e)  edge node {$dI$} (c3)  
+   (e) edge node {$dR$} (c4);    
+\end{tikzpicture}
+\end{center}
+
+The $SEIR$ model is utilized to forecast the spread of diseases such as COVID-19. Estimating the model's parameters, including $\beta$, $\alpha$, and $\gamma$, is essential for achieving accurate predictions. Numerical integration techniques and solver functions in programming languages like Python are employed to solve the aforementioned model's differential equations.
+
+Simulating the $SEIR$ model with estimated parameter values allows us to generate predictions for the future course of the outbreak. These predictions offer insights into factors such as the number of infections, the timing and duration of the peak, and the impact of interventions like vaccination and quarantine measures.
+
+It is important to consider the limitations of the $SEIR$ model. Prediction accuracy depends on factors like data quality, model assumptions, and parameter uncertainties. Regular updates and refinement of the model with new data are necessary to improve prediction accuracy.
+
+In summary, the $SEIR$ model is a valuable tool for predicting the spread of diseases like COVID-19. By estimating model parameters and numerically solving the differential equations, we can generate predictions that aid in understanding disease dynamics, evaluating control strategies, and informing public health interventions.
+
+\newpage
+\section{References}
+\vspace{0.25cm}
+    \begin{otherlanguage}{vietnamese}
+        \nocite{*}%
+        \printbibliography[heading=none]
+    \end{otherlanguage}
+
+
+\end{document}
