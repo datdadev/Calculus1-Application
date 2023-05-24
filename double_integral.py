@@ -56,9 +56,9 @@ def simulate_double_integral():
         ax.set_zlim(z_min, z_max)
 
     # Rotate the camera to a different view
-    ax.view_init(elev=30, azim=45)  # Change the elev and azim values for different views
+    ax.view_init(elev=30, azim=45) 
 
-    # 2D contour plot (projection on XY-plane)
+    # Projection on XY-plane
     ax.contourf(X, Y, Z, zdir='z', offset=0, cmap='viridis', alpha=0.3)
 
     # Draw dashed lines from surface to base
@@ -73,7 +73,7 @@ def simulate_double_integral():
     ax.plot(x_min * np.ones_like(y), y, zs=0, linestyle='dashed', color='black')
     ax.plot(x_max * np.ones_like(y), y, zs=0, linestyle='dashed', color='black')
 
-    plt.title(f"Volume: {volume:.2f}")
+    plt.title(f"Volume: {volume:.6f}")
     plt.show()
 
 # Run the simulation

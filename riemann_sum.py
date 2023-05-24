@@ -13,12 +13,12 @@ except Exception as e:
 def riemann_sum(f, a, b, n):
     """Compute the Riemann sum for the function f over the interval [a, b]"""
     dx = (b - a) / n  # Width of each subinterval
-    x = np.linspace(a, b, n+1)  # Partition the interval [a, b] into n subintervals
+    x = np.linspace(a, b, n+1)  # Partition interval [a, b] into n subintervals
     heights = f(x[:-1])  # Heights of the rectangles using left endpoints
     total_area = np.sum(heights) * dx  # Sum the areas of all rectangles
     return total_area
 
-# Define the interval [a, b] and the number of subintervals (n)
+# Define interval [a, b] and number of subintervals (n)
 while True:
     try:
         a, b = map(float, input("Enter the domain values for a and b: ").split())
@@ -32,7 +32,7 @@ n = 10
 x = np.linspace(a, b, 10000)
 y = f(x)
 
-# Create the figure and the line that we will manipulate
+# Create the figure and the line
 fig, ax = plt.subplots()
 line, = ax.plot(x, y, lw=2)
 
@@ -52,10 +52,10 @@ props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
 text = ax.text(0.03, 0.95, textString, transform=ax.transAxes, fontsize=10,
         verticalalignment='top', bbox=props)
 
-# Adjust the main plot to make room for the sliders
+# Adjust main plot to make room for the slider
 fig.subplots_adjust(bottom=0.25)
 
-# Make a horizontal slider to control the precision.
+# Make a horizontal slider to control the precision
 axfreq = fig.add_axes([0.25, 0.1, 0.65, 0.03])
 freq_slider = Slider(
     ax=axfreq,
@@ -82,7 +82,6 @@ def update(val):
 
     fig.canvas.draw_idle()
 
-# Register the update function with the slider
 freq_slider.on_changed(update)
 
 plt.show()
