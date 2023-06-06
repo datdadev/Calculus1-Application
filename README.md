@@ -35,4 +35,7 @@ This project is for educational purposes only and should not be used for commerc
 
 ## Usage
 
+1. Clone the repository to your local machine.
+2. Run `pip install -r requirements.txt` to install the required packages listed in the [requirements.txt](https://github.com/datdadev/Calculus1-Application/blob/main/requirements.txt) file.
+
 Each code example is self-contained and can be run independently. Detailed instructions on how to execute and modify each code are provided within the respective files.
